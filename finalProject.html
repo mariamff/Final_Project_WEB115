@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEB-115 Final Project</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="banner">
+        <h1>Perfectly Portioned Fitness</h1>
+        <p>Created by Mariam Faragalla | WEB-115 Section 0002</p>
+        <h2>Build Your Meal Plan</h2>
+    </div>
+
+    <form id="mealPlanForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+
+        <label for="goal">Weekly Goal:</label>
+        <textarea id="goal" rows="4" required></textarea>
+
+        <h3>Meal Plan for the Week:</h3>
+
+        <label for="breakfast">Breakfast:</label>
+        <input type="text" id="breakfast" required>
+
+        <label for="snack1">Snack 1:</label>
+        <input type="text" id="snack1" required>
+
+        <label for="lunch">Lunch:</label>
+        <input type="text" id="lunch" required>
+
+        <label for="snack2">Snack 2:</label>
+        <input type="text" id="snack2" required>
+
+        <label for="dinner">Dinner:</label>
+        <input type="text" id="dinner" required>
+
+        <button type="button" onclick="generateMealPlan()">Generate Meal Plan</button>
+        <button type="button" onclick="clearForm()">Clear Planner</button>
+    </form>
+
+    <script src="projectJS.js"></script>
+    
+</body>
+
+</html>
