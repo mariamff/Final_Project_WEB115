@@ -1,4 +1,8 @@
+const areFieldsNotEmpty = (name, email, goal) => name.trim() !== '' && email.trim() !== '' && goal.trim() !== '';
+
+// Function to generate a meal plan based on user input
 function generateMealPlan() {
+    // Retrieve user input values
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const goal = document.getElementById('goal').value;
@@ -9,6 +13,11 @@ function generateMealPlan() {
         snack2: document.getElementById('snack2').value,
         dinner: document.getElementById('dinner').value,
     };
+
+    if (!areFieldsNotEmpty(name, email, goal)) {
+        alert('Please fill out all required fields.');
+        return;
+    }
 
     if (!isValidEmail(email)) {
         alert('Please enter a valid email address.');
@@ -57,12 +66,15 @@ function generateMealPlan() {
                         </ul>
                     </div>
                 </div>
-                // <button type = "button" <a href= "" download='computer' class="button">Download
-                // <i class="fa fa-download"></i></button> </a>
-
-                <a href="./Testing.js" download='computer' class="download-btn">Download
-                <i class="fa fa-download"></i>
+                <a href="mealPlanContent" download="meal_plan.html" class="download-btn">
+                    <button type="button">
+                        Download
+                        <i class="fa fa-download"></i>
+                    </button>
                 </a>
+                <button id="print-button" type="button" class="btn"><i class="fas fa-print"></i>Print Page</button>
+
+
             </body>
         </html>
     `;
@@ -76,8 +88,30 @@ function clearForm() {
     document.getElementById('mealPlanForm').reset();
 }
 function isValidEmail(email) {
-    // Simple email validation
+    
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
 }
 
+
+
+const printButton = document.getElementById('print-button');
+
+const printPage = () => {
+    const printFrame = document.createElement('iframe');
+    printFrame.style.display = 'none';
+    
+    
+    printFrame.src = "./finalProject.html"
+
+
+    document.body.appendChild(printFrame);
+
+    printFrame.contentWindow.focus();
+    printFrame.contentWindow.print();
+
+};
+
+printButton.addEventListener('click', () => {
+    printPage();
+});

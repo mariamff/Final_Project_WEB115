@@ -57,12 +57,15 @@ function generateMealPlan() {
                         </ul>
                     </div>
                 </div>
-                // <button type = "button" <a href= "" download='computer' class="button">Download
-                // <i class="fa fa-download"></i></button> </a>
-
-                <a href="./Testing.js" download='computer' class="download-btn">Download
-                <i class="fa fa-download"></i>
+                <a href="mealPlanContent" download="meal_plan.html" class="download-btn">
+                    <button type="button">
+                        Download
+                        <i class="fa fa-download"></i>
+                    </button>
                 </a>
+                <button id="print-button" type="button" class="btn"><i class="fas fa-print"></i>Print Page</button>
+
+
             </body>
         </html>
     `;
@@ -81,3 +84,25 @@ function isValidEmail(email) {
     return emailRegex.test(email);
 }
 
+
+// Additional code for print functionality
+const printButton = document.getElementById('print-button');
+
+const printPage = () => {
+    const printFrame = document.createElement('iframe');
+    printFrame.style.display = 'none';
+    
+    // Set the source of the iframe to the dynamically generated HTML content
+    printFrame.src = 'data:text/html;charset=utf-8,' + encodeURIComponent(newPageContent);
+
+
+    document.body.appendChild(printFrame);
+
+    printFrame.contentWindow.focus();
+    printFrame.contentWindow.print();
+
+};
+
+printButton.addEventListener('click', () => {
+    printPage();
+});
